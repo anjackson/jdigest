@@ -467,8 +467,8 @@ public class JDigest extends JFrame
 			super(parent,
 				"<html>Use the system default encoding unless " +
 				"your file names contain characters not displayable in this " +
-				"system�s (or the system in which you intend to verify the " +
-				"checksum�s) default codepage. Other software may not be " +
+				"system's (or the system in which you intend to verify the " +
+				"checksum's) default codepage. Other software may not be " +
 				"able to read the generated digest file. <a href=\"link\">" +
 				"Learn more...</a></html>");
 
@@ -858,7 +858,6 @@ public class JDigest extends JFrame
 		{
 			public void windowClosing(WindowEvent e)
 			{
-				System.out.println("WindowClosing");
 				current.closeButton();
 			}
 		});

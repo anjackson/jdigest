@@ -1,0 +1,35 @@
+2009/09/08 v0.2.0
+
+Improved version with a new project name (JDigest). Almost entirely rewrote the
+code, so there are many changes. It is recommended to completely uninstall the
+previous version before installing this one, since otherwise file associations
+will not be correctly set. 
+
+- Renamed project to JDigest.
+- Completely revamped the GUI using a Wizard style approach.
+- Added support for SHA-1 digest algorithm.
+- Changed to use system's default encoding for digest files by default, which is
+  what people would expect in most cases (v0.1.0 used UTF-16 by default).
+- Added options window allowing the user to adjust all parameters before the
+  digest / check process begins.
+- Added Windows Explorer context menu "Digest with options..." and "Check with
+  options..." which brings in the aforementioned options window.
+- Added command line options: --options to show the options window, --algorithm
+  {alg} to set the digest algorithm, --encoding {enc} to set the digest file
+  encoding, and --paths to choose the path processing mode when writing to /
+  reading from digest files (possible options are absolute, relative to digest
+  file location and relative to a user specified folder).
+- Applied the "Principle of least astonishment" by setting "Edit" as the default
+  command for digest files (instead of "Check").
+
+TODO for next release:
+
+- Correct any bugs (there will surely be many!).
+- Add internationalization.
+- Add help and about.
+- Add DDE to support multiple file selection from Windows Explorer (seems like
+  quite a challenge, though).
+
+2009/05/31 v0.1.0
+
+First public release.

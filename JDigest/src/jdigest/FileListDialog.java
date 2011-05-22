@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -49,17 +51,42 @@ public class FileListDialog extends JDialog
 		list.setDropMode(DropMode.INSERT);
 		list.setTransferHandler(new TransferHandler()
 		{
+			/* We use two data flavors:
+			 * - javaFileListFlavor if possible
+			 * - uri-list if above not available (Linux) */
+
 			private static final long serialVersionUID = 1L;
+
+			private DataFlavor getURIListDataFlavor()
+			{
+				try
+				{
+					return new DataFlavor(
+						"text/uri-list;class=java.lang.String");
+				}
+				catch(Exception e)
+				{
+					return null;
+				}
+			}
 
 			public boolean canImport(TransferHandler.TransferSupport info)
 			{
+				DataFlavor uriListDataFlavor = getURIListDataFlavor();
+				boolean uriListDataFlavorSupported =
+					uriListDataFlavor != null
+					&& info.isDataFlavorSupported(uriListDataFlavor);
+
 				return info.isDataFlavorSupported(
-					DataFlavor.javaFileListFlavor);
+					DataFlavor.javaFileListFlavor)
+					|| uriListDataFlavorSupported;
 			}
 
 			@SuppressWarnings("unchecked")
 			public boolean importData(TransferHandler.TransferSupport info)
 			{
+				DataFlavor uriListDataFlavor = getURIListDataFlavor();
+
 				if(!info.isDrop())
 					return false;
 
@@ -70,18 +97,54 @@ public class FileListDialog extends JDialog
 				int index = dl.getIndex();
 				try
 				{
-					List<File> files = (List<File>)info.getTransferable()
-						.getTransferData(DataFlavor.javaFileListFlavor);
-					for(File file: files)
-						listModel.add(index++, file.getAbsolutePath());
-					return true;
+					if(info.isDataFlavorSupported(
+						DataFlavor.javaFileListFlavor))
+					{
+						List<File> files = (List<File>)info.getTransferable()
+							.getTransferData(DataFlavor.javaFileListFlavor);
+						for(File file: files)
+							listModel.add(index++, file.getAbsolutePath());
+						return true;
+					}
+					else if(uriListDataFlavor != null
+						&& info.isDataFlavorSupported(uriListDataFlavor))
+					{
+						String transferData = (String)info.getTransferable()
+							.getTransferData(uriListDataFlavor);
+						StringTokenizer tokenizer = new StringTokenizer(
+							transferData, "\r\n");
+						while(tokenizer.hasMoreTokens())
+						{
+							String line = tokenizer.nextToken().trim();
+							if(!line.startsWith("#"))	// ignore comments
+							{
+								try
+								{
+									File file = new File(new URI(line));
+									listModel.add(index++,
+										file.getAbsolutePath());
+								}
+								catch(Exception e)
+								{
+									e.printStackTrace();
+								}
+							}
+						}
+						return true;
+					}
+					else
+					{
+						return false;
+					}
 				}
 				catch(UnsupportedFlavorException e)
 				{
+					e.printStackTrace();
 					return false;
 				}
 				catch(IOException e)
 				{
+					e.printStackTrace();
 					return false;
 				}
 			}

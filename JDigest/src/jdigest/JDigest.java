@@ -47,7 +47,6 @@ public class JDigest extends JFrame
 	{
 		private static final long serialVersionUID = 1L;
 
-		protected static final int MAXWIDTH = 500;
 		protected final JDigest parent;
 
 		protected Options getOptions()
@@ -214,12 +213,14 @@ public class JDigest extends JFrame
 				new JEditorPane("text/html", fileEncodingHint);
 			digestFileEncodingHintLabel.setEditable(false);
 			digestFileEncodingHintLabel.setOpaque(false);
-			digestFileEncodingHintLabel.setPreferredSize(Util.getPreferredSize(
-				digestFileEncodingHintLabel.getText(), true, MAXWIDTH -
-				digestFilePanel.getInsets().left -
-				digestFilePanel.getInsets().right));
-			digestFileEncodingHintLabel.setMinimumSize(
-				digestFileEncodingHintLabel.getPreferredSize());
+
+			// dirty trick, but it works: we force the hint label to take
+			// roughly 4 lines of text
+			Dimension prefSize = digestFileEncodingHintLabel.getPreferredSize();
+			prefSize.width /= 3;
+			prefSize.height *= 4;
+			digestFileEncodingHintLabel.setPreferredSize(prefSize);
+
 			GroupLayout digestFilePanelLayout = new GroupLayout(
 				digestFilePanel);
 			digestFilePanel.setLayout(digestFilePanelLayout);
@@ -885,7 +886,6 @@ public class JDigest extends JFrame
 			startCard.setCurrent();
 
 		pack();
-		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}

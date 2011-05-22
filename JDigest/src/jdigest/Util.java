@@ -7,11 +7,9 @@ import java.util.Formatter;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-import javax.swing.text.View;
 
 public class Util
 {
@@ -62,22 +60,6 @@ public class Util
 		}
 		else
 			return f.format("%dbytes", bytes).toString();
-	}
-
-	private static final JLabel resizer = new JLabel();
-	/**
-	 * Returns the preferred size to set a component at in order to render 
-	 * an html string.  You can specify the size of one dimension.*/  
-	public static Dimension getPreferredSize(String html,
-		boolean width, int prefSize)
-	{
-		resizer.setText(html);
-		View view = (View)resizer.getClientProperty(
-			javax.swing.plaf.basic.BasicHTML.propertyKey);
-		view.setSize(width? prefSize: 0, width? 0: prefSize);
-		float w = view.getPreferredSpan(View.X_AXIS);
-		float h = view.getPreferredSpan(View.Y_AXIS);
-		return new Dimension((int)Math.ceil(w), (int)Math.ceil(h));
 	}
 
 	public static int getDefaultGap(JComponent component1,

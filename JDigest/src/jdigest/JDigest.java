@@ -8,14 +8,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.net.URI;
 import java.util.Formatter;
 
 import javax.swing.BorderFactory;
@@ -24,6 +21,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,6 +35,8 @@ import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class JDigest extends JFrame
@@ -210,7 +210,10 @@ public class JDigest extends JFrame
 			digestFileEncodingCombo.addItems(Options.Encoding.getFullList());
 			digestFileEncodingCombo.addBasicItems(Options.Encoding.getBasicList(
 				getOptions().getDigestFileEncoding()));
-			JLabel digestFileEncodingHintLabel = new JLabel(fileEncodingHint);
+			JEditorPane digestFileEncodingHintLabel =
+				new JEditorPane("text/html", fileEncodingHint);
+			digestFileEncodingHintLabel.setEditable(false);
+			digestFileEncodingHintLabel.setOpaque(false);
 			digestFileEncodingHintLabel.setPreferredSize(Util.getPreferredSize(
 				digestFileEncodingHintLabel.getText(), true, MAXWIDTH -
 				digestFilePanel.getInsets().left -
@@ -297,25 +300,28 @@ public class JDigest extends JFrame
 			setBorder(Util.createEmptyBorder(digestFilePanel, this));
 			add(digestFilePanel, BorderLayout.CENTER);
 
-			digestFileEncodingHintLabel.addMouseListener(new MouseAdapter()
-			{
-				public void mouseClicked(MouseEvent e)
+			digestFileEncodingHintLabel.addHyperlinkListener(
+				new HyperlinkListener()
 				{
-					if(Desktop.isDesktopSupported())
+					@Override
+					public void hyperlinkUpdate(HyperlinkEvent e)
 					{
-						Desktop desktop = Desktop.getDesktop();
-						if(desktop.isSupported(Desktop.Action.BROWSE))
-						try
+						if(e.getEventType()
+							== HyperlinkEvent.EventType.ACTIVATED
+							&& Desktop.isDesktopSupported())
 						{
-							desktop.browse(new URI(
-							"http://en.wikipedia.org/wiki/Character_encoding"));
-						}
-						catch(Exception ex)
-						{
+							Desktop desktop = Desktop.getDesktop();
+							if(desktop.isSupported(Desktop.Action.BROWSE)) try
+							{
+								desktop.browse(e.getURL().toURI());
+							}
+							catch(Exception ex)
+							{
+							}
 						}
 					}
 				}
-			});
+			);
 			digestFileChangeButton.addActionListener(new ActionListener()
 			{			
 				public void actionPerformed(ActionEvent e)
@@ -469,7 +475,8 @@ public class JDigest extends JFrame
 				"your file names contain characters not displayable in this " +
 				"system's (or the system in which you intend to verify the " +
 				"checksum's) default codepage. Other software may not be " +
-				"able to read the generated digest file. <a href=\"link\">" +
+				"able to read the generated digest file. " +
+				"<a href=\"http://en.wikipedia.org/wiki/Character_encoding\">" +
 				"Learn more...</a></html>");
 
 			inputFilesLabel = new JLabel("(no files selected)");
@@ -541,7 +548,8 @@ public class JDigest extends JFrame
 			super(parent,
 				"<html>Select the algorithm, encoding and path processing " +
 				"method matching the digest file. " +
-				"<a href=\"link\">Learn more...</a></html></html>");
+				"<a href=\"http://en.wikipedia.org/wiki/Character_encoding\">" +
+				"Learn more...</a></html></html>");
 		}
 
 		public void setCurrent()

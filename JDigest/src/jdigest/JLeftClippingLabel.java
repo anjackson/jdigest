@@ -37,7 +37,6 @@ public class JLeftClippingLabel extends JLabel
 		int availTextWidth = getSize().width
 			- getInsets().left - getInsets().right;
 		String text = fullText;
-		System.out.println(text);
 
 		if(availTextWidth <= 0)
 			super.setText(text);
@@ -51,10 +50,11 @@ public class JLeftClippingLabel extends JLabel
 				String clipString = "...";
 				int width = fm.stringWidth(clipString);
 				int i = text.length();
-				while(--i >= 0 && width <= availTextWidth)
+				while(width <= availTextWidth && --i >= 0)
 					width += fm.charWidth(text.charAt(i));
 	
-				String newText = text.substring(i + 1);
+				String newText = i + 1 <= text.length()?
+					text.substring(i + 1): "";
 				super.setText("..." + newText);
 			}
 		}

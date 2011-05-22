@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="JDigest/jar/JDigest.jar"/>
+    <jar path="JDigest/jar/jdigest.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/JDigest/src/export.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>

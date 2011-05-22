@@ -1,5 +1,46 @@
+jdigest (0.3.0) stable; urgency=low
+
+  * TODO: detail changes
+
+ -- Gaston DASSIEU-BLANCHET <gdassieu@gmail.com>  Sun, 22 May 2011 00:00:00 +0000
+
 jdigest (0.2.0) stable; urgency=low
 
-  * TODO: fill debian changelog
+  * Improved version with a new project name (JDigest). Almost entirely rewrote
+    the code, so there are many changes. It is recommended to completely
+    uninstall the previous version before installing this one, since otherwise
+    file associations will not be correctly set:
 
- -- Gaston DASSIEU-BLANCHET <gdassieu@gamil.com>  Sun, 22 May 2011 20:00:00 +0900
+    o Renamed project to JDigest.
+    o Completely revamped the GUI using a Wizard style approach.
+    o Added support for SHA-1 digest algorithm.
+    o Changed to use system's default encoding for digest files by default,
+      which is what people would expect in most cases (v0.1.0 used UTF-16 by
+      default).
+    o Added options window allowing the user to adjust all parameters before the
+  	  digest / check process begins.
+    o Added Windows Explorer context menu "Digest with options..." and "Check
+      with options..." which brings in the aforementioned options window.
+    o Added command line options: --options to show the options window,
+      --algorithm {alg} to set the digest algorithm, --encoding {enc} to set the
+      digest file encoding, and --paths to choose the path processing mode when
+      writing to / reading from digest files (possible options are absolute,
+      relative to digest file location and relative to a user specified folder).
+    o Applied the "Principle of least astonishment" by setting "Edit" as the
+      default command for digest files (instead of "Check").
+
+  * TODO for next release:
+
+    o Correct any bugs (there will surely be many!).
+    o Add internationalization.
+    o Add help and about.
+    o Add DDE to support multiple file selection from Windows Explorer (seems
+      like quite a challenge, though).
+
+ -- Gaston DASSIEU-BLANCHET <gdassieu@gmail.com>  Tue, 08 Sep 2009 00:00:00 +0000
+
+jdigest (0.1.0) stable; urgency=low
+
+  * First public release.
+
+ -- Gaston DASSIEU-BLANCHET <gdassieu@gmail.com>  Sun, 31 May 2009 00:00:00 +0000

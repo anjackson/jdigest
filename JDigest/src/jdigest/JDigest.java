@@ -607,10 +607,11 @@ public class JDigest extends JFrame
 			layout.setAutoCreateContainerGaps(true);
 			layout.setHorizontalGroup(
 				layout.createParallelGroup()
-					.addComponent(totalProgressLabel)
+					.addComponent(totalProgressLabel, 1,
+						GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(totalProgressBar)
-					.addComponent(fileProgressLabel, 10,
-						GroupLayout.DEFAULT_SIZE, MAXWIDTH)
+					.addComponent(fileProgressLabel, 1,
+						GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(fileProgressBar)
 					.addComponent(scrollPane)
 			);

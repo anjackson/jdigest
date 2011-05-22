@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=JDigest
+Comment=Calculate and verify MD5 / SHA-1 digests
+Exec=jdigest
+Terminal=false
+Type=Application
+StartupNotify=true
+#Icon=/usr/share/jdigest/jdigest.png
+Categories=GNOME;GTK;Utility
+MimeType=application/jdigest.jdigest;

@@ -1,0 +1,2 @@
+debian/input/jdigest.jar /usr/share/jdigest
+debian/input/jdigest /usr/bin

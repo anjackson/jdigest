@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -13,12 +14,15 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
@@ -887,6 +891,12 @@ public class JDigest extends JFrame
 
 		pack();
 		setLocationRelativeTo(null);
+		//setIconImages(icons)
+		List<Image> icons = new ArrayList<Image>();
+		for(int i: new int[] {16, 24, 32, 48, 64})
+			icons.add(new ImageIcon(this.getClass().getResource(
+				"IconMain-" + i + ".png")).getImage());
+		setIconImages(icons);
 		setVisible(true);
 	}
 

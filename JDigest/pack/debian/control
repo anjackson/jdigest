@@ -8,7 +8,7 @@ Homepage: http://code.google.com/p/jdigest/
 
 Package: jdigest
 Architecture: all
-Depends: sun-java5-jre | sun-java6-jre | openjdk-6-jre
+Depends: sun-java5-jre | sun-java6-jre | openjdk-6-jre, nautilus-actions
 Description: JDigest
  JDigest is an open source graphical file MD5 / SHA-1 digest calculator and
  verifier, written in Java for cross-platform portability

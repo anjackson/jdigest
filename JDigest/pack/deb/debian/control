@@ -2,11 +2,13 @@ Source: jdigest
 Section: editors
 Priority: optional
 Maintainer: Gaston DASSIEU-BLANCHET <gdassieu@gmail.com>
-Build-Depends: debhelper (>= 5), sun-java5-jre, sun-java5-jdk
+Build-Depends: debhelper (>= 5), sun-java5-jre | sun-java6-jre | openjdk-6-jre, sun-java5-jdk | sun-java6-jdk | openjdk-6-jdk
 Standards-Version: 3.8.0
 Homepage: http://code.google.com/p/jdigest/
 
 Package: jdigest
 Architecture: all
-Depends: sun-java5-jre | sun-java6-jre
-Description: JDigest is an open source graphical file MD5 / SHA-1 digest calculator and verifier, written in Java for cross-platform portability
+Depends: sun-java5-jre | sun-java6-jre | openjdk-6-jre
+Description: JDigest
+ JDigest is an open source graphical file MD5 / SHA-1 digest calculator and
+ verifier, written in Java for cross-platform portability

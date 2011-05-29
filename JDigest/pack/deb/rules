@@ -21,6 +21,7 @@ binary:
 	dh_installmime
 	dh_desktop
 	dh_icons
+	dh_gconf
 	dh_compress
 	dh_fixperms
 	dh_installdeb

@@ -1,0 +1,53 @@
+/apps/nautilus-actions/configurations/jdigest.digest.sha/type	Action
+/apps/nautilus-actions/configurations/jdigest.digest.sha/items	profile-zero
+/apps/nautilus-actions/configurations/jdigest.digest.sha/label	Digest here (SHA)
+/apps/nautilus-actions/configurations/jdigest.digest.sha/tooltip	Compute the SHA checksums of the selected files
+/apps/nautilus-actions/configurations/jdigest.digest.sha/icon	/usr/share/jdigest/jdigest.svg
+/apps/nautilus-actions/configurations/jdigest.digest.sha/toolbar-label	Digest here (SHA)
+/apps/nautilus-actions/configurations/jdigest.digest.sha/profile-zero/desc-name	Default profile
+/apps/nautilus-actions/configurations/jdigest.digest.sha/profile-zero/path	jdigest
+/apps/nautilus-actions/configurations/jdigest.digest.sha/profile-zero/parameters	--digest %M %d/%f.sha
+/apps/nautilus-actions/configurations/jdigest.digest.sha/profile-zero/isdir	true
+/apps/nautilus-actions/configurations/jdigest.digest.sha/profile-zero/accept-multiple-files	true
+/apps/nautilus-actions/configurations/jdigest.digest.md5/type	Action
+/apps/nautilus-actions/configurations/jdigest.digest.md5/items	profile-zero
+/apps/nautilus-actions/configurations/jdigest.digest.md5/label	Digest here (MD5)
+/apps/nautilus-actions/configurations/jdigest.digest.md5/tooltip	Compute the MD5 checksums of the selected files
+/apps/nautilus-actions/configurations/jdigest.digest.md5/icon	/usr/share/jdigest/jdigest.svg
+/apps/nautilus-actions/configurations/jdigest.digest.md5/toolbar-label	Digest here (MD5)
+/apps/nautilus-actions/configurations/jdigest.digest.md5/profile-zero/desc-name	Default profile
+/apps/nautilus-actions/configurations/jdigest.digest.md5/profile-zero/path	jdigest
+/apps/nautilus-actions/configurations/jdigest.digest.md5/profile-zero/parameters	--digest %M %d/%f.md5
+/apps/nautilus-actions/configurations/jdigest.digest.md5/profile-zero/isdir	true
+/apps/nautilus-actions/configurations/jdigest.digest.md5/profile-zero/accept-multiple-files	true
+/apps/nautilus-actions/configurations/jdigest.digest.opts/type	Action
+/apps/nautilus-actions/configurations/jdigest.digest.opts/items	profile-zero
+/apps/nautilus-actions/configurations/jdigest.digest.opts/label	Digest with options...
+/apps/nautilus-actions/configurations/jdigest.digest.opts/tooltip	Compute the checksum of selected files with custom options
+/apps/nautilus-actions/configurations/jdigest.digest.opts/icon	/usr/share/jdigest/jdigest.svg
+/apps/nautilus-actions/configurations/jdigest.digest.opts/toolbar-label	Digest with options...
+/apps/nautilus-actions/configurations/jdigest.digest.opts/profile-zero/desc-name	Default profile
+/apps/nautilus-actions/configurations/jdigest.digest.opts/profile-zero/path	jdigest
+/apps/nautilus-actions/configurations/jdigest.digest.opts/profile-zero/parameters	--options --digest %M %d/%f.md5
+/apps/nautilus-actions/configurations/jdigest.digest.opts/profile-zero/isdir	true
+/apps/nautilus-actions/configurations/jdigest.digest.opts/profile-zero/accept-multiple-files	true
+/apps/nautilus-actions/configurations/jdigest.check/type	Action
+/apps/nautilus-actions/configurations/jdigest.check/items	profile-zero
+/apps/nautilus-actions/configurations/jdigest.check/label	Check
+/apps/nautilus-actions/configurations/jdigest.check/tooltip	Check files against the checksums in the selected file
+/apps/nautilus-actions/configurations/jdigest.check/icon	/usr/share/jdigest/jdigest.svg
+/apps/nautilus-actions/configurations/jdigest.check/toolbar-label	Check
+/apps/nautilus-actions/configurations/jdigest.check/profile-zero/desc-name	Default profile
+/apps/nautilus-actions/configurations/jdigest.check/profile-zero/path	jdigest
+/apps/nautilus-actions/configurations/jdigest.check/profile-zero/parameters	--check %d/%f
+/apps/nautilus-actions/configurations/jdigest.check/profile-zero/basenames	[*.md5,*.sha]
+/apps/nautilus-actions/configurations/jdigest.check.opts/type	Action
+/apps/nautilus-actions/configurations/jdigest.check.opts/items	profile-zero
+/apps/nautilus-actions/configurations/jdigest.check.opts/label	Check with options...
+/apps/nautilus-actions/configurations/jdigest.check.opts/tooltip	Check files against the checksums in the selected file with custom options
+/apps/nautilus-actions/configurations/jdigest.check.opts/icon	/usr/share/jdigest/jdigest.svg
+/apps/nautilus-actions/configurations/jdigest.check.opts/toolbar-label	Check with options...
+/apps/nautilus-actions/configurations/jdigest.check.opts/profile-zero/desc-name	Default profile
+/apps/nautilus-actions/configurations/jdigest.check.opts/profile-zero/path	jdigest
+/apps/nautilus-actions/configurations/jdigest.check.opts/profile-zero/parameters	--options --check %d/%f
+/apps/nautilus-actions/configurations/jdigest.check.opts/profile-zero/basenames	[*.md5,*.sha]

@@ -1,14 +1,10 @@
 #!/usr/bin/make -f
 
-build: clean build-stamp binary
-
-build-stamp:
-	touch build-stamp
+build: clean binary
 
 clean:
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp
 	dh_clean
 
 binary:
@@ -17,7 +13,6 @@ binary:
 	dh_clean -k
 	dh_install
 	dh_installchangelogs
-#	dh_installman debian/jdigest.1
 	dh_installmime
 	dh_desktop
 	dh_icons
@@ -27,4 +22,4 @@ binary:
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
-	dh_builddeb
+	dh_builddeb --destdir=./debian

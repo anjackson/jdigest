@@ -1,4 +1,4 @@
-../jar/jdigest.jar /usr/share/jdigest
-../../oth/jdigest.svg /usr/share/jdigest
+jar/jdigest.jar /usr/share/jdigest
+../oth/jdigest.svg /usr/share/jdigest
 debian/input/jdigest /usr/bin
 debian/input/jdigest.desktop /usr/share/applications

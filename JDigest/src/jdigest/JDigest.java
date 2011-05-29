@@ -893,7 +893,7 @@ public class JDigest extends JFrame
 		setLocationRelativeTo(null);
 		//setIconImages(icons)
 		List<Image> icons = new ArrayList<Image>();
-		for(int i: new int[] {16, 24, 32, 48, 64})
+		for(int i: new int[] {16, 22, 24, 32, 48, 64})
 			icons.add(new ImageIcon(this.getClass().getResource(
 				"IconMain-" + i + ".png")).getImage());
 		setIconImages(icons);

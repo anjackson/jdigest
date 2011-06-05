@@ -5,7 +5,7 @@ jdigest (0.3.0) stable; urgency=low
   * Added an application icon. It's rubbish, but it'll do for now.
   * Created an Ubuntu package (should work in other Debian based distros)
 
- -- Gaston DASSIEU-BLANCHET <gdassieu@gmail.com>  Sun, 29 May 2011 00:00:00 +0000
+ -- Gaston DASSIEU-BLANCHET <gdassieu@gmail.com>  Sun, 5 Jun 2011 00:00:00 +0000
 
 jdigest (0.2.0) stable; urgency=low
 

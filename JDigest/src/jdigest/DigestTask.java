@@ -20,6 +20,16 @@ public class DigestTask extends BasicTask
 	 */
 	private void analyzeRecursive(File file)
 	{
+		try
+		{
+			if(Util.isSymlink(file))
+				return;
+		}
+		catch(IOException e)
+		{
+			return;
+		}
+
 		if(file.isDirectory())
 		{
 			setFileOrFolderName(file.getPath());
@@ -50,6 +60,21 @@ public class DigestTask extends BasicTask
 	 */
 	private void getDigestRecursive(File file, DigestFileWriter out)
 	{
+		try
+		{
+			if(Util.isSymlink(file))
+			{
+				publish(new Logger.Message(Logger.Message.Type.NFO,
+					"Ignored symbolic link: " + file.toString()));
+				return;
+			}
+		}
+		catch(IOException e)
+		{
+			publish(new Logger.Message(Logger.Message.Type.ERR, e));
+			return;
+		}
+
 		if(file.isDirectory())
 		{
 			File[] subFiles = file.listFiles();

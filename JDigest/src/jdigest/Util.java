@@ -2,6 +2,8 @@ package jdigest;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
 import java.util.Formatter;
 
 import javax.swing.BorderFactory;
@@ -96,5 +98,20 @@ public class Util
 			getDefaultGap(component, SwingConstants.EAST, parent),
 			getDefaultGap(component, SwingConstants.NORTH, parent),
 			getDefaultGap(component, SwingConstants.WEST, parent));
+	}
+
+	// Plagiarized from Apache Commons
+	public static boolean isSymlink(File file) throws IOException
+	{
+		File fileInCanonicalDir = null;
+		if(file.getParent() == null)
+			fileInCanonicalDir = file;
+		else
+		{
+			File canonicalDir = file.getParentFile().getCanonicalFile();
+			fileInCanonicalDir = new File(canonicalDir, file.getName());
+		}
+		return !fileInCanonicalDir.getCanonicalFile().equals(
+			fileInCanonicalDir.getAbsoluteFile());
 	}
 }

@@ -44,7 +44,7 @@ public class Options
 		 * elements. The first element in the returned list is the root: either a
 		 * drive letter "L:\", a UNC path "\\computername" or the UNIX root "/".
 		 * ".\"'s and "..\"'s are removed.  
-		 * @param path
+		 * @param path the absolute path to be converted to an element list
 		 * @return a list of the path elements, the first element being the root
 		 */
 		private static List<String> getPathElements(File path)
@@ -85,9 +85,9 @@ public class Options
 		 * Returns a representation of path relative to the directory represented by
 		 * base, if possible (path and base share the same root); otherwise, the
 		 * absolute representation of path is returned
-		 * @param path
-		 * @param base
-		 * @return
+		 * @param path the path to be relativized
+		 * @param base the base to which to relativize the path
+		 * @return the base relative representation of path
 		 */
 		protected static String relativize(File path, File base)
 		{
@@ -313,8 +313,8 @@ public class Options
 
 	/**
 	 * Creates a new Options object from the given command line parameters
-	 * @param args
-	 * @throws OptionsException
+	 * @param args command line parameters
+	 * @throws OptionsException if there are invalid command line parameters
 	 */
 	public Options(String[] args)
 	throws OptionsException
@@ -423,7 +423,7 @@ public class Options
 
 	/**
 	 * Validates this Options object
-	 * @throws OptionsException
+	 * @throws OptionsException if the validation fails
 	 */
 	public void validate()
 	throws OptionsException

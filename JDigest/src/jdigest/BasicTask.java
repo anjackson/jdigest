@@ -161,8 +161,8 @@ public abstract class BasicTask extends SwingWorker<Void, Logger.Message>
 	 * 
 	 * @param file The file whose digest is to be calculated
 	 * @return The digest represented as a byte array, or null if cancelled
-	 * @throws FileNotFoundException
-	 * @throws IOException
+	 * @throws FileNotFoundException if the file is not found
+	 * @throws IOException if there is an IO exception while reading the file
 	 */
 	protected byte[] getDigest(File file)
 	throws FileNotFoundException, IOException
